@@ -205,8 +205,6 @@ public class HoverAbility : MonoBehaviour
         {
             hoverAudioSource.Play();
         }
-        
-        Debug.Log("[Hover] Hover iniciado.");
     }
 
     /// <summary>
@@ -250,8 +248,6 @@ public class HoverAbility : MonoBehaviour
         {
             hoverAudioSource.Stop();
         }
-        
-        Debug.Log("[Hover] Hover encerrado.");
     }
 
     /// <summary>

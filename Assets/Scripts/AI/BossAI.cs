@@ -221,8 +221,6 @@ public class BossAI : MonoBehaviour
             // Pode adicionar som específico de dano do Boss aqui
         }
         
-        Debug.Log($"[Boss] Recebeu dano! Vida: {currentHealth}/{maxHealth}");
-        
         // Verifica se morreu
         if (currentHealth <= 0)
         {
@@ -339,8 +337,6 @@ public class BossAI : MonoBehaviour
     void Die()
     {
         isDead = true;
-        
-        Debug.Log("[Boss] Boss derrotado!");
         
         // Desativa a IA
         aiAgent.aiEnabled = false;

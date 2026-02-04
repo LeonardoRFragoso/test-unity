@@ -186,8 +186,6 @@ public class PlayerBullet : MonoBehaviour
         {
             enemy.bodyRenderer.material.SetColor("_EmissionColor", Color.black);
         }
-        
-        Debug.Log($"[PlayerBullet] Inimigo {enemy.gameObject.name} desativado permanentemente.");
     }
 
     /// <summary>

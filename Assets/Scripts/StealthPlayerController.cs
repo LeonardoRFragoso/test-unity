@@ -624,8 +624,6 @@ public class StealthPlayerController : Character {
         {
             console.ShowMessage("Energia insuficiente!");
         }
-        
-        Debug.Log($"[{abilityName}] Bloqueado: energia insuficiente.");
     }
     
     /// <summary>
