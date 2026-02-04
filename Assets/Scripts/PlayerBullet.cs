@@ -178,7 +178,7 @@ public class PlayerBullet : MonoBehaviour
         if (enemy.chasing)
         {
             enemy.chasing = false;
-            GameLogic.instance.RemoveChaser();
+            GameLogic.instance?.RemoveChaser();
         }
         
         // Escurece o material do inimigo para indicar desativação

@@ -102,7 +102,7 @@ public class HoverAbility : MonoBehaviour
     void Update()
     {
         // Não processa se o jogo não estiver em gameplay
-        if (GameLogic.instance.gameState != GameLogic.GameStates.gameplay)
+        if (GameLogic.instance == null || GameLogic.instance.gameState != GameLogic.GameStates.gameplay)
         {
             if (isHovering)
             {

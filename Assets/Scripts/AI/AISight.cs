@@ -93,7 +93,13 @@ public class AISight : MonoBehaviour {
                     }
                 }
                 break;
-            case SightStates.seeingEnemy:        
+            case SightStates.seeingEnemy:
+                // AUDITORIA: Null check para seenCharacter destruído
+                if (seenCharacter == null)
+                {
+                    setSightState(SightStates.searching);
+                    break;
+                }
                 Vector3 vectorToSeenEnemy = Vector3.Normalize(seenCharacter.transform.position - transform.position);
                 if (!canSeecharacter(seenCharacter.transform))
                 {
@@ -109,6 +115,12 @@ public class AISight : MonoBehaviour {
                 }
                 break;
             case SightStates.closeToEnemy:
+                // AUDITORIA: Null check para seenCharacter destruído
+                if (seenCharacter == null)
+                {
+                    setSightState(SightStates.searching);
+                    break;
+                }
                 if (Vector3.Distance(seenCharacter.transform.position, transform.position) > nearVisionDistance)
                 {
                     Vector3 vectorToEnemy = Vector3.Normalize(seenCharacter.transform.position - transform.position);

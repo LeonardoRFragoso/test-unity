@@ -151,7 +151,7 @@ public class BossAI : MonoBehaviour
 
     void Update()
     {
-        if (isDead || GameLogic.instance.gameState != GameLogic.GameStates.gameplay)
+        if (isDead || GameLogic.instance == null || GameLogic.instance.gameState != GameLogic.GameStates.gameplay)
         {
             return;
         }
@@ -306,7 +306,8 @@ public class BossAI : MonoBehaviour
         }
         
         // Volta para cor de dano
-        float healthPercent = (float)currentHealth / maxHealth;
+        // AUDITORIA: Proteção contra divisão por zero
+        float healthPercent = maxHealth > 0 ? (float)currentHealth / maxHealth : 0f;
         Color damagedColor = Color.Lerp(Color.red, bossEmissionColor, healthPercent);
         aiAgent.bodyRenderer.material.SetColor("_EmissionColor", damagedColor);
     }
@@ -325,7 +326,8 @@ public class BossAI : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
             
             // Volta para cor do Boss (mais intensa conforme perde vida)
-            float healthPercent = (float)currentHealth / maxHealth;
+            // AUDITORIA: Proteção contra divisão por zero
+            float healthPercent = maxHealth > 0 ? (float)currentHealth / maxHealth : 0f;
             Color damagedColor = Color.Lerp(Color.red, bossEmissionColor, healthPercent);
             aiAgent.bodyRenderer.material.SetColor("_EmissionColor", damagedColor);
         }
@@ -395,6 +397,8 @@ public class BossAI : MonoBehaviour
     /// </summary>
     public float GetHealthPercent()
     {
+        // AUDITORIA: Proteção contra divisão por zero
+        if (maxHealth <= 0) return 0f;
         return (float)currentHealth / maxHealth;
     }
 

@@ -40,6 +40,14 @@ public class DebugOverlay : MonoBehaviour
     private static DebugOverlay _instance;
     private static bool _searchedForInstance = false;
     
+    // AUDITORIA: Reset de flags estáticas entre Play Sessions no Editor
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+    static void ResetStatics()
+    {
+        _instance = null;
+        _searchedForInstance = false;
+    }
+    
     /// <summary>
     /// TAREFA 2: Singleton com fallback automático.
     /// Cria automaticamente se não existir.
